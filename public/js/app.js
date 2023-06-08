@@ -43,7 +43,7 @@ async function generateAdviceRequest(message, experience, industry, negotiationS
         // var responseObject;
         // var responseContainer;
         let dataMessage = data.message;
-        console.log(data);
+        
         dataMessage.forEach(element => {
             
         //    let responseObject = document.createElement("<div class='mt-2'>${element}</div>");
