@@ -10,13 +10,13 @@ dotenv.config();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(cors({
+    origin: '*'
+}));
 
 // routes
 app.use('/test', advisorRoutes);
-app.use(cors({
-    origin: 'https://career-advisor.onrender.com/'
-}));
+
 
 app.use('*', (req, res) => {
     res.send('Invalid URL')
