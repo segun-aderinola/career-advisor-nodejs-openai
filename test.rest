@@ -1,0 +1,10 @@
+POST https://career-advisor.onrender.com/test/career HTTP/1.1
+content-type: application/json
+
+{  
+  "message": "How to become a pro in web development",
+  "experience": "3 years",
+  "industry": "Tech",
+  "negotiationSKill": "Excellent"
+
+}
