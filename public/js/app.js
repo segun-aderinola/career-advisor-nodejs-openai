@@ -1,5 +1,5 @@
-
 function onSubmit(e){
+    
     e.preventDefault();
     
     const message = document.querySelector('#message').value;
