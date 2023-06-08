@@ -23,7 +23,7 @@ async function generateAdviceRequest(message, experience, industry, negotiationS
     try {
         showSpinner();
         
-        const response = await fetch('http://localhost:5000/test/career', {
+        const response = await fetch('https://career-advisor.onrender.com/test/career', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
