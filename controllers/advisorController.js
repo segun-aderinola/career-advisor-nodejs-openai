@@ -42,23 +42,23 @@ const generateAdvice = async (req, res, next) => {
         negotiationSKill +
         " negotiation skill";
 
-    //     const moderation = await openai.createModeration({
-    //     input: message,
-    //   });
-    //   const result = moderation.data.results;
-    //   console.log(result);
-    //   if (result[0].flagged === true) {
-    //     return res.status(400).json({
-    //       success: false,
-    //       message: 'This prompt is flagged. Please provide a valid prompt',
-    //     });
-    //   } else {
+        const moderation = await openai.createModeration({
+        input: message,
+      });
+      const result = moderation.data.results;
+      console.log(result);
+      if (result[0].flagged === true) {
+        return res.status(400).json({
+          success: false,
+          message: 'This prompt is flagged. Please provide a valid prompt',
+        });
+      } else {
         const response = await openai.createChatCompletion({
           model: "gpt-3.5-turbo",
           messages: [{ role: "user", content: prompt }],
         });
 
-
+        
         const apiResponse = response.data.choices[0].message;
         const responseContent = apiResponse.content;
 
@@ -91,11 +91,11 @@ const generateAdvice = async (req, res, next) => {
           });
         }
       }
-    // }
+    }
   } catch (err) {
     return res.status(401).json({
       success: false,
-      error: err.message,
+      error: err.message
     });
   }
 };
