@@ -26,12 +26,12 @@ const generateAdvice = async (req, res, next) => {
     else if(message.length < 10) {
         return res.status(400).json({
             success: false,
-            error: "Please kindly provide a detailed prompt to help me assist you.",
+            error: "Please kindly provide a detailed promptMessage to help me assist you.",
           });
     }
     
     else {
-      const pp =
+      const promptMessage =
         message +
         " with " +
         experience +
@@ -50,12 +50,12 @@ const generateAdvice = async (req, res, next) => {
       if (result[0].flagged === true) {
         return res.status(400).json({
           success: false,
-          message: 'This prompt is flagged. Please provide a valid prompt',
+          message: 'This promptMessage is flagged. Please provide a valid promptMessage',
         });
       } else {
         const response = await openai.createChatCompletion({
           model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: pp }],
+          messages: [{ role: "user", content: promptMessage }],
         });
 
         
@@ -85,7 +85,7 @@ const generateAdvice = async (req, res, next) => {
           });
         
         } else {
-          return res.status(200).json({
+          return res.status(401).json({
             success: false,
             message: "Unable to get response from OpenAi",
           });
