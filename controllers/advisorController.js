@@ -31,7 +31,7 @@ const generateAdvice = async (req, res, next) => {
     }
     
     else {
-      const prompt =
+      const pp =
         message +
         " with " +
         experience +
@@ -55,7 +55,7 @@ const generateAdvice = async (req, res, next) => {
       } else {
         const response = await openai.createChatCompletion({
           model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: prompt }],
+          messages: [{ role: "user", content: pp }],
         });
 
         
